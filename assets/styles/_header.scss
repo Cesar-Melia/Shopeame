@@ -1,0 +1,49 @@
+.b-header {
+    height: 100px;
+    background-color: #ffffff;
+    font-family: "Arial";
+
+    &__top {
+        height: 100px;
+        width: 100%;
+        margin: 0;
+        position: relative;
+    }
+
+    &__logo {
+        height: 40px;
+        width: 40px;
+        margin: 12px;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #2979ff 0%, #4c589e 100%);
+        color: #ffffff;
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    &__h1 {
+        font-size: 36px;
+    }
+
+    &__nav {
+        height: 72px;
+        width: 100%;
+        background-color: #ffc970;
+        z-index: 100;
+        margin-bottom: 100px;
+        position: fixed;
+    }
+
+    &__div {
+        margin: 9px 20px 7px 20px;
+    }
+
+    &__icon {
+        font-size: 22px;
+        margin: 5px 0 5px 0;
+    }
+
+    &__menu {
+        font-size: 14px;
+    }
+}

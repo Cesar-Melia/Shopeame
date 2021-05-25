@@ -1,0 +1,25 @@
+.b-gallery {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    margin-top: 252px;
+    padding: 59px;
+    font-family: "Arial";
+
+    &__product {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    &__img {
+        width: 100%;
+    }
+
+    &__desc {
+    }
+
+    &__name {
+    }
+}

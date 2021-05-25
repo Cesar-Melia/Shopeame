@@ -341,11 +341,92 @@ template {
   display: none;
 }
 
+body {
+  background-color: #cccccc;
+}
+
+.b-header {
+  height: 100px;
+  background-color: #ffffff;
+  font-family: "Arial";
+}
+
+.b-header__top {
+  height: 100px;
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.b-header__logo {
+  height: 40px;
+  width: 40px;
+  margin: 12px;
+  border-radius: 6px;
+  background: -webkit-gradient(linear, left top, right top, from(#2979ff), to(#4c589e));
+  background: linear-gradient(90deg, #2979ff 0%, #4c589e 100%);
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.b-header__h1 {
+  font-size: 36px;
+}
+
+.b-header__nav {
+  height: 72px;
+  width: 100%;
+  background-color: #ffc970;
+  z-index: 100;
+  margin-bottom: 100px;
+  position: fixed;
+}
+
+.b-header__div {
+  margin: 9px 20px 7px 20px;
+}
+
+.b-header__icon {
+  font-size: 22px;
+  margin: 5px 0 5px 0;
+}
+
+.b-header__menu {
+  font-size: 14px;
+}
+
+.b-gallery {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  margin-top: 252px;
+  padding: 59px;
+  font-family: "Arial";
+}
+
 .b-gallery__product {
-  width: 150px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 16px;
 }
 
 .b-gallery__img {
   width: 100%;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./../fonts/Inter/static/Inter-Regular.ttf");
+  font-weight: 500;
+  font-style: normal;
 }
 /*# sourceMappingURL=main.css.map */
