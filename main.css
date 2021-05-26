@@ -371,7 +371,7 @@ template {
 
 body,
 html {
-  background-color: #eeee;
+  background-color: #eeeeee;
   font-family: "Inter";
 }
 
@@ -434,7 +434,7 @@ html {
   max-width: 1200px;
   background-color: #ffffff;
   margin: 151px 0 87px 0;
-  padding: 59px;
+  padding: 40px 59px 59px 59px;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -505,7 +505,7 @@ html {
 }
 
 .b-gallery__desc {
-  color: #19191d;
+  color: #787885;
 }
 
 .b-gallery__name {
@@ -607,5 +607,61 @@ html {
 
 .b-main__p {
   font-size: 14px;
+}
+
+.b-manage {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  margin: 151px 0 87px 0;
+  padding: 40px 59px 59px 59px;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.b-manage__h2 {
+  width: 100%;
+  margin: 0 0 63px 0;
+}
+
+.b-manage__line {
+  border-left: solid 1px #f89f21;
+  height: 350px;
+  width: 1px;
+  margin: 0 60px;
+}
+
+.b-form {
+  padding: 0;
+}
+
+.b-form legend {
+  display: none;
+}
+
+.b-form__fieldset {
+  border: none;
+}
+
+.b-form__label {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.b-form__input {
+  margin-bottom: 22px;
+  font-size: 14px;
+}
+
+.b-form__button {
+  color: #ffffff;
+  background-color: #f89f21;
+  border-radius: 6px;
+  border: none;
+  width: 150px;
+  height: 32px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 /*# sourceMappingURL=main.css.map */

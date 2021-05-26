@@ -1,0 +1,33 @@
+.b-form {
+    padding: 0;
+
+    legend {
+        display: none;
+    }
+
+    &__fieldset {
+        border: none;
+        //border: 0px;
+        //box-shadow: none;
+    }
+
+    &__label {
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+
+    &__input {
+        margin-bottom: 22px;
+        font-size: 14px;
+    }
+
+    &__button {
+        color: #ffffff;
+        background-color: #f89f21;
+        border-radius: 6px;
+        border: none;
+        width: 150px;
+        height: 32px;
+        align-self: flex-end;
+    }
+}

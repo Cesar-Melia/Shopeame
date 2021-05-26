@@ -5,22 +5,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="./assets/fonts/icons/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="main.css">
     <script src="products.js" defer></script>
     <title>Shopeame</title>
 </head>
 
 <body>
-    <header>
-        <span class="icon-home"></span>
-        <span class="icon-products"></span>
-        <span class="icon-gear"></span>
-    </header>
-    <section class="container-fluid">
-        <div class="row">
+    <header class="b-header">
+        <div class="b-header__top d-flex justify-content-center align-items-center">
+            <span class="b-header__logo d-flex justify-content-center">S</span>
+            <h1 class=" b-header__h1">Shopéame!</h1>
         </div>
-    </section>
+        <nav class="b-header__nav d-flex justify-content-center align-items-center">
+            <a class="b-header__link d-flex justify-content-center" href="index.html">
+                <div class="b-header__div ">
+                    <span class=" b-icon__header icon-home d-flex justify-content-center"></span>
+                    <span class="d-flex justify-content-center">Inicio</span>
+                </div>
+            </a>
+            <a class="b-header__link d-flex justify-content-center" href="products.html">
+                <div class="b-header__div">
+                    <span class="b-icon__header icon-products d-flex justify-content-center"></span>
+                    <span class="d-flex justify-content-center">Productos</span>
+                </div>
+            </a>
+            <a class="b-header__link d-flex justify-content-center" href="management.html">
+                <div class="b-header__div">
+                    <span class="b-icon__header icon-gear d-flex justify-content-center"></span>
+                    <span class="d-flex justify-content-center">Gestión</span>
+                </div>
+            </a>
+        </nav>
+    </header>
+    <main class="container-fluid d-flex justify-content-center">
+        <div class="b-manage">
+            <div class="d-flex justify-content-between flex-column">
+                <h2 data-function="manage-h2" class="b-manage__h2">Creación / Edición de productos</h2>
+                <div class="b-manage__div-block row">
+                    <form class="b-form col-12 col-sm-6">
+                        <fieldset class="b-form__fieldset d-flex flex-column">
+                            <legend>Create or Update product</legend>
+                            <label class="b-form__label" for="name">Nombre del producto:</label>
+                            <input class="b-form__input" type="text" id="name" placeholder="Por ej: Tiesto para planta"
+                                required>
+                            <label class="b-form__label" for="price">Precio:</label>
+                            <input class="b-form__input" type="text" id="price" placeholder="Por ej: Tiesto para planta"
+                                required>
+                            <label class="b-form__label" for="description">Descripción:</label>
+                            <input class="b-form__input" type="text" id="description"
+                                placeholder="Por ej: Tiesto para planta" required>
+                            <label class="b-form__label" for="url">Ruta de la imagen:</label>
+                            <input class="b-form__input" type="text" id="url" placeholder="Por ej: Tiesto para planta"
+                                required>
+                            <label class="b-form__label" for="rate">Opiniones:</label>
+                            <input class="b-form__input" type="text" id="rate" placeholder="Por ej: Tiesto para planta"
+                                required>
+                            <input class="b-form__button" type="submit" value="Guardar">
+                        </fieldset>
+                    </form>
+                    <div class="b-manage__line d-none d-sm-block"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="b-footer d-flex flex-column">
+        <p class="b-footer__p d-flex justify-content-center">Siguenos en:</p>
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Twitter <span class="b-icon__social icon-twitter"></span></a>
+            </div>
+            <span class="b-footer__separator ">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Facebook <span class="b-icon__social icon-facebook2"></span></a>
+            </div>
+            <span class="b-footer__separator">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Instagram <span class="b-icon__social icon-instagram"></span></a>
+            </div>
+            <span class="b-footer__separator">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">TikTok <span class="b-icon__social icon-tiktok"></span></a>
+            </div>
+        </div>
+        <p class="b-footer__p d-flex justify-content-center">Copyright Shopéame © 2020</p>
+
+    </footer>
 </body>
 
 </html>
