@@ -1,13 +1,12 @@
 .b-header {
     height: 100px;
     background-color: #ffffff;
-    font-family: "Arial";
+    text-decoration: none;
 
     &__top {
         height: 100px;
         width: 100%;
         margin: 0;
-        position: relative;
     }
 
     &__logo {
@@ -23,6 +22,7 @@
 
     &__h1 {
         font-size: 36px;
+        font-family: "red-hat";
     }
 
     &__nav {
@@ -31,19 +31,22 @@
         background-color: #ffc970;
         z-index: 100;
         margin-bottom: 100px;
-        position: fixed;
     }
 
     &__div {
-        margin: 9px 20px 7px 20px;
+        height: 56px;
+        width: 100px;
+        margin: 9px 0 7px 0;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: #ebf2ff4d;
+        }
     }
 
-    &__icon {
-        font-size: 22px;
-        margin: 5px 0 5px 0;
-    }
-
-    &__menu {
+    &__link {
         font-size: 14px;
+        text-decoration: none;
+        color: #444444;
     }
 }

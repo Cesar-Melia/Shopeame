@@ -19,36 +19,62 @@
             <h1 class=" b-header__h1">Shopéame!</h1>
         </div>
         <nav class="b-header__nav d-flex justify-content-center align-items-center">
-            <div class="b-header__div">
-                <span class=" b-header__icon icon-home d-flex justify-content-center"></span>
-                <span class="b-header__menu">Home</span>
+            <div class="b-header__div ">
+                <span class=" b-icon__header icon-home d-flex justify-content-center"></span>
+                <a href="index.html" class="b-header__link d-flex justify-content-center">Inicio</a>
             </div>
             <div class="b-header__div">
-                <span class="b-header__icon icon-products d-flex justify-content-center"></span>
-                <span class="b-header__menu">Productos</span>
+                <span class="b-icon__header icon-products d-flex justify-content-center"></span>
+                <a href="products.html" class="b-header__link d-flex justify-content-center">Productos</a>
             </div>
             <div class="b-header__div">
-                <span class="b-header__icon icon-gear d-flex justify-content-center"></span>
-                <span class="b-header__menu">Gestión</span>
+                <span class="b-icon__header icon-gear d-flex justify-content-center"></span>
+                <a href="management.html" class="b-header__link d-flex justify-content-center">Gestión</a>
             </div>
         </nav>
     </header>
-    <main class="container-fluid">
+    <main class="container-fluid d-flex justify-content-center">
         <div class="b-gallery">
-            <div>
-                <h2 data-function="gallery-h2" class="b-galery__h2">Listado de productos</h2>
-
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 data-function="gallery-h2" class="b-gallery__h2">Listado de productos</h2>
+                <div>
+                    <button data-function="button-block" class="b-gallery__button b-gallery__button--pressed">
+                        <span class="b-icon__list-block icon-blocks"></span>
+                    </button>
+                    <button data-function="button-list" class="b-gallery__button">
+                        <span class="b-icon__list-block icon-list"></span>
+                    </button>
+                </div>
             </div>
-            <div data-function="products" class="d-flex justify-content-between flex-wrap">
-
-
-
-
-
-
+            <div class="b-gallery__search d-flex justify-content-end">
+                <input data-function="search" type="text" placeholder="Buscar">
+            </div>
+            <div data-function="products" class="d-flex justify-content-center flex-wrap row no-gutters">
             </div>
         </div>
     </main>
+    <footer class="b-footer d-flex flex-column">
+        <p class="b-footer__p d-flex justify-content-center">Siguenos en:</p>
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Twitter <span class="b-icon__social icon-twitter"></span></a>
+            </div>
+            <span class="b-footer__separator ">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Facebook <span class="b-icon__social icon-facebook2"></span></a>
+            </div>
+            <span class="b-footer__separator">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Instagram <span class="b-icon__social icon-instagram"></span></a>
+            </div>
+            <span class="b-footer__separator">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">TikTok <span class="b-icon__social icon-tiktok"></span></a>
+            </div>
+        </div>
+        <p class="b-footer__p d-flex justify-content-center">Copyright Shopéame © 2020</p>
+
+    </footer>
 </body>
 
 </html>

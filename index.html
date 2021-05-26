@@ -5,22 +5,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="./assets/fonts/icons/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="main.css">
     <script src="products.js" defer></script>
     <title>Shopeame</title>
 </head>
 
 <body>
-    <header>
-        <span class="icon-home"></span>
-        <span class="icon-products"></span>
-        <span class="icon-gear"></span>
-    </header>
-    <section class="container-fluid">
-        <div class="row">
+    <header class="b-header">
+        <div class="b-header__top d-flex justify-content-center align-items-center">
+            <span class="b-header__logo d-flex justify-content-center">S</span>
+            <h1 class=" b-header__h1">Shopéame!</h1>
         </div>
-    </section>
+        <nav class="b-header__nav d-flex justify-content-center align-items-center">
+            <div class="b-header__div ">
+                <span class=" b-icon__header icon-home d-flex justify-content-center"></span>
+                <a href="index.html" class="b-header__link d-flex justify-content-center">Inicio</a>
+            </div>
+            <div class="b-header__div">
+                <span class="b-icon__header icon-products d-flex justify-content-center"></span>
+                <a href="products.html" class="b-header__link d-flex justify-content-center">Productos</a>
+            </div>
+            <div class="b-header__div">
+                <span class="b-icon__header icon-gear d-flex justify-content-center"></span>
+                <a href="management.html" class="b-header__link d-flex justify-content-center">Gestión</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container-fluid d-flex justify-content-center">
+        <div class="b-main">
+            <h2 class="b-main__h2">Bienvenido a Shopéame</h2>
+            <div>
+                <h3>¿Qué es Shopéame?</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra euismod purus, eu ultrices nunc
+                    convallis in. Praesent ac diam sit amet lectus vulputate facilisis nec ut nisl. Fusce vel tortor
+                    vestibulum, gravida ante a, faucibus erat. Proin ullamcorper massa eu luctus tempor. In tincidunt
+                    urna ut arcu viverra, tristique elementum eros pellentesque. Nullam vitae fringilla dui. In hac
+                    habitasse platea dictumst. Donec sed faucibus erat. Nunc faucibus finibus risus, in porta neque
+                    porttitor non.</p>
+                <h3>¿Para qué puedo usar Shopéame?</h3>
+                <p>Duis semper ante sed nunc tincidunt, at tincidunt nunc fringilla. Nulla facilisi. Duis at lectus
+                    semper, sagittis est vitae, malesuada nibh. Suspendisse at porttitor arcu. Proin dignissim risus sed
+                    purus mattis porttitor. Aliquam non purus imperdiet dui porta viverra vitae eu metus. Aenean eu
+                    lectus elit. Nullam id lorem enim. Suspendisse potenti. In nulla ante, luctus commodo lacinia eu,
+                    dignissim a risus. Aliquam nec sapien faucibus, consectetur libero sed, consectetur nulla. Maecenas
+                    nibh ex, aliquet vitae ultricies vitae, cursus non ante. In eget urna dui.</p>
+                <h3>¿Qué hacemos en Shopéame?</h3>
+                <p>Nunc hendrerit ullamcorper nisi id tristique. Vestibulum iaculis diam et dictum finibus. Maecenas eu
+                    elit neque. In eget ullamcorper massa, vitae elementum erat. Praesent velit mi, malesuada quis
+                    libero ac, condimentum dignissim metus. Ut vel est justo. Mauris non sagittis velit. In sollicitudin
+                    mauris posuere purus aliquam blandit.</p>
+                <h3>¿Es seguro Shopéame?</h3>
+                <p>Praesent et mauris velit. Nunc gravida ante sapien, vitae bibendum mauris finibus nec. Nunc viverra
+                    ipsum in dui blandit, sed maximus justo mollis. Mauris iaculis ligula velit. Ut nunc libero,
+                    pulvinar ac condimentum sit amet, imperdiet quis urna. In hac habitasse platea dictumst. Aenean
+                    tellus augue, elementum eu sodales non, pellentesque vel lorem. Phasellus nec leo sit amet sem
+                    elementum imperdiet. Proin at congue dolor. Maecenas sed consectetur arcu. Sed nec nisi magna.
+                    Phasellus lobortis quam vel justo posuere, ac mattis magna condimentum.</p>
+            </div>
+
+        </div>
+    </main>
+    <footer class="b-footer d-flex flex-column">
+        <p class="b-footer__p d-flex justify-content-center">Siguenos en:</p>
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Twitter <span class="b-icon__social icon-twitter"></span></a>
+            </div>
+            <span class="b-footer__separator ">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Facebook <span class="b-icon__social icon-facebook2"></span></a>
+            </div>
+            <span class="b-footer__separator">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">Instagram <span class="b-icon__social icon-instagram"></span></a>
+            </div>
+            <span class="b-footer__separator">|</span>
+            <div class="d-flex flex-column align-items-center">
+                <a class="b-footer__social" href="">TikTok <span class="b-icon__social icon-tiktok"></span></a>
+            </div>
+        </div>
+        <p class="b-footer__p d-flex justify-content-center">Copyright Shopéame © 2020</p>
+
+    </footer>
 </body>
 
 </html>

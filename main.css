@@ -341,21 +341,50 @@ template {
   display: none;
 }
 
-body {
-  background-color: #cccccc;
+@font-face {
+  font-family: "inter";
+  src: url("./assets//fonts/Inter/static/Inter-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "inter";
+  src: url("./assets//fonts/Inter/static/Inter-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "inter";
+  src: url("./assets//fonts/Inter/static/Inter-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "red-hat";
+  src: url("./assets/fonts/Red_Hat_Display/RedHatDisplay-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+body,
+html {
+  background-color: #eeee;
+  font-family: "Inter";
 }
 
 .b-header {
   height: 100px;
   background-color: #ffffff;
-  font-family: "Arial";
+  text-decoration: none;
 }
 
 .b-header__top {
   height: 100px;
   width: 100%;
   margin: 0;
-  position: relative;
 }
 
 .b-header__logo {
@@ -372,6 +401,7 @@ body {
 
 .b-header__h1 {
   font-size: 36px;
+  font-family: "red-hat";
 }
 
 .b-header__nav {
@@ -380,53 +410,172 @@ body {
   background-color: #ffc970;
   z-index: 100;
   margin-bottom: 100px;
-  position: fixed;
 }
 
 .b-header__div {
-  margin: 9px 20px 7px 20px;
+  height: 56px;
+  width: 100px;
+  margin: 9px 0 7px 0;
+  border-radius: 10px;
 }
 
-.b-header__icon {
-  font-size: 22px;
-  margin: 5px 0 5px 0;
+.b-header__div:hover {
+  background-color: #ebf2ff4d;
 }
 
-.b-header__menu {
+.b-header__link {
   font-size: 14px;
+  text-decoration: none;
+  color: #444444;
 }
 
 .b-gallery {
   width: 100%;
   max-width: 1200px;
   background-color: #ffffff;
-  margin-top: 252px;
+  margin: 151px 0 87px 0;
   padding: 59px;
-  font-family: "Arial";
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.b-gallery__h2 {
+  margin: 15px 0;
+}
+
+.b-gallery__button {
+  width: 68px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px #adacac;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.b-gallery__button:hover {
+  border: solid 1px #3f3f3f;
+}
+
+.b-gallery__button--pressed {
+  -webkit-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.24);
+          box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.24);
+  border-radius: 6px;
+  border: 1px;
+  background-color: #ededed;
+}
+
+.b-gallery__button img {
+  width: 18px;
+  height: 18px;
+}
+
+.b-gallery__search {
+  width: 100%;
+  margin-bottom: 67px;
 }
 
 .b-gallery__product {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 16px;
+  margin-bottom: 16px;
 }
 
 .b-gallery__img {
-  width: 100%;
+  margin: 16px;
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url("./../fonts/Inter/static/Inter-Regular.ttf");
+.b-gallery__img img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.b-gallery__text-block {
+  padding: 16px;
+}
+
+.b-gallery__price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.b-gallery__desc {
+  color: #19191d;
+}
+
+.b-gallery__name {
+  font-weight: normal;
+}
+
+.b-gallery__stars {
+  padding: 4px 16px;
+  display: block;
+}
+
+.b-gallery__button-edit {
+  color: #2264d1;
+  background-color: #ffffff;
+  border: 1px solid #9dc2ff;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 4px 20px 4px 20px;
+  margin-right: 16px;
+}
+
+.b-icon__header {
+  font-size: 22px;
   font-weight: 500;
-  font-style: normal;
+  margin: 5px 0 5px 0;
+  color: #444444;
+}
+
+.b-icon__list-block {
+  color: #444444;
+}
+
+.b-icon__star {
+  color: #fb8200;
+  margin: 0;
+}
+
+.b-icon____star-text {
+  color: #5e6366;
+  margin: 0;
+}
+
+.b-icon__social {
+  margin: 0 5px;
+}
+
+.b-footer {
+  background-color: #333333;
+  height: 280px;
+  width: 100%;
+  color: #ffffff;
+}
+
+.b-footer__p {
+  margin: 60px 0 30px 0;
+}
+
+.b-footer__social {
+  text-decoration: none;
+  font-size: 14px;
+  color: #ffffff;
+  margin: 0 10px 0 10px;
+}
+
+.b-footer__social:hover {
+  -webkit-text-decoration: underline 1px #ffffff;
+          text-decoration: underline 1px #ffffff;
+}
+
+.b-footer__separator {
+  margin: 0 10px;
 }
 /*# sourceMappingURL=main.css.map */

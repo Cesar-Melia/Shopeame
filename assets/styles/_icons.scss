@@ -1,0 +1,26 @@
+.b-icon {
+    &__header {
+        font-size: 22px;
+        font-weight: 500;
+        margin: 5px 0 5px 0;
+        color: #444444;
+    }
+
+    &__list-block {
+        color: #444444;
+    }
+
+    &__star {
+        color: #fb8200;
+        margin: 0;
+    }
+
+    &____star-text {
+        color: #5e6366;
+        margin: 0;
+    }
+
+    &__social {
+        margin: 0 5px;
+    }
+}
