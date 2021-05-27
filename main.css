@@ -478,6 +478,10 @@ html {
   height: 32px;
 }
 
+.b-gallery__button-edit:hover {
+  border: 2px solid #9dc2ff;
+}
+
 .b-gallery__search {
   width: 33%;
   min-width: 70px;

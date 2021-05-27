@@ -132,7 +132,7 @@ const setStars = (rating) => {
 
 const editProduct = () => {
     const id = event.target.getAttribute("id");
-    window.open(`management.html?id=${id}`);
+    window.location = `management.html?id=${id}`;
 };
 
 const applyList = () => {
@@ -183,12 +183,22 @@ async function putProduct(preview) {
     console.log("Put product");
 }
 
-/////////////////////////////////////////////////////////////////////////////  ERROR
+/////////////////////////////////////////////////////////////////////////////  SET TIME OUT  +  ERROR
 const loadProduct = () => {
     const urlParams = new URLSearchParams(window.location.search);
     numId = urlParams.get("id");
-    //preview[0] = productsMod.find((product) => product.id === numId);
-    console.log("Find " + products);
+
+    setTimeout(() => {
+        preview[0] = productsMod.find((product) => product.id === Number(numId));
+
+        name$$.value = preview[0].name;
+        price$$.value = preview[0].price;
+        description$$.value = preview[0].description;
+        stars$$.value = preview[0].stars;
+        image$$.value = preview[0].image;
+
+        printProducts(preview);
+    }, 100);
 };
 
 if (window.location.href.includes("products.html")) {
@@ -212,7 +222,6 @@ if (window.location.href.includes("management.html")) {
     if (window.location.href.includes("?id=")) {
         loadProduct();
     }
-
     printProducts(preview);
 
     form$$.addEventListener("input", () => {
