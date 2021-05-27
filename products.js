@@ -3,8 +3,13 @@ let products = [];
 let productsMod = [];
 
 async function api(url) {
-    const res = await fetch(url);
-    return res.json();
+    try {
+        const res = await fetch(url);
+        return res.json();
+    } catch (err) {
+        console.error("Error: Fallo de conexion con la API", err);
+        alert("Error: Fallo de conexion con la API");
+    }
 }
 
 const divProducts$$ = document.body.querySelector('[data-function="products"]');
@@ -17,8 +22,11 @@ const price$$ = document.body.querySelector('[data-function="price"]');
 const description$$ = document.body.querySelector('[data-function="description"]');
 const stars$$ = document.body.querySelector('[data-function="stars"]');
 const image$$ = document.body.querySelector('[data-function="image"]');
+const form$$ = document.querySelector("form");
 
 let galleryCounter = 0;
+let numId;
+let preview;
 
 const printProducts = (products = productsMod) => {
     divProducts$$.innerHTML = "";
@@ -28,7 +36,7 @@ const printProducts = (products = productsMod) => {
             div$$.classList.add(
                 "b-gallery__product",
                 "d-flex",
-                "justify-content-end",
+                "justify-content-between",
                 "col-12",
                 "col-sm-6",
                 "col-lg-3"
@@ -39,14 +47,14 @@ const printProducts = (products = productsMod) => {
         }
         div$$.setAttribute("id", product.id);
         div$$.innerHTML = `
-        <div class="b-gallery__img">
+        <div class="b-gallery__img align-self-center">
             <img src=${product.image}>
         </div>`;
 
         const divText$$ = document.createElement("div");
         divText$$.classList.add("b-gallery__text-block");
         divText$$.innerHTML = `
-        <div classs="d-flex justify-content-end">
+        <div>
             <h4 class="b-gallery__name">${product.name}</h4>
             <span class="b-gallery__price">${product.price} €</span>
             <p class="b-gallery__desc">${product.description}</p>
@@ -92,10 +100,6 @@ const searchProducts = (event) => {
     printProducts();
 };
 
-if (window.location.href.includes("products.html")) {
-    search$$.addEventListener("input", searchProducts);
-}
-
 const updateGalleryCounter = () => {
     galleryCounter++;
     if (window.location.href.includes("products.html")) {
@@ -125,41 +129,27 @@ const setStars = (rating) => {
     return htmlStr;
 };
 
-if (window.location.href.includes("management.html")) {
-    let numId = 0;
-    let preview = [
-        {
-            id: numId,
-            name: "Nombre",
-            price: 0,
-            description: "Descripción",
-            stars: 0,
-            image: "assets/images/img-default.png",
-        },
-    ];
-    printProducts(preview);
+const editProduct = () => {
+    const id = event.target.getAttribute("id");
+    window.open(`management.html?id=${id}`);
+};
 
-    name$$.addEventListener("input", () => {
-        generatePreview(preview);
-    });
-    price$$.addEventListener("input", () => {
-        generatePreview(preview);
-    });
-    description$$.addEventListener("input", () => {
-        generatePreview(preview);
-    });
-    stars$$.addEventListener("input", () => {
-        generatePreview(preview);
-    });
-    image$$.addEventListener("input", () => {
-        generatePreview(preview);
-    });
-}
+const applyList = () => {
+    block$$.classList.remove("b-gallery__button--pressed");
+    list$$.classList.add("b-gallery__button--pressed");
+};
+
+const applyBlock = () => {
+    list$$.classList.remove("b-gallery__button--pressed");
+    block$$.classList.add("b-gallery__button--pressed");
+};
 
 const generatePreview = (preview) => {
-    numId = productsMod.length;
-    while (productsMod.find((product) => product.id === numId)) {
-        numId++;
+    if (numId === undefined) {
+        numId = productsMod.length;
+        while (productsMod.find((product) => product.id === numId)) {
+            numId++;
+        }
     }
     preview[0].id = numId;
     preview[0].name = name$$.value;
@@ -169,29 +159,47 @@ const generatePreview = (preview) => {
     preview[0].image = image$$.value;
     printProducts(preview);
 };
-
-//////////////////////////////  EDIT PRODUCT  ////////////////////////////
-
-const editProduct = () => {
-    const id = event.target.getAttribute("id");
-    console.log(id);
-    // sessionStorage.setItem("reloading", "true");
-    // sessionStorage.setItem("productId", id);
-    // window.location.assign("management.html");
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+const loadProduct = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    numId = urlParams.get("id");
+    console.log(numId);
+    //preview[0] = productsMod.find((product) => product.id === numId);
+    console.log("Find " + products[5]);
 };
 
-// const fillInputs = () => {
-//     console.log("Editar producto");
-//     const id = sessionStorage.getItem("productId");
-//     sessionStorage.removeItem("productId");
-//     sessionStorage.removeItem("reloading");
-//     console.log(id);
-// };
+if (window.location.href.includes("products.html")) {
+    search$$.addEventListener("input", searchProducts);
+    list$$.addEventListener("click", applyList);
+    block$$.addEventListener("click", applyBlock);
+}
 
-// let reloading = sessionStorage.getItem("reloading");
-// if (reloading === true) {
-//     fillInputs();
-// }
+if (window.location.href.includes("management.html")) {
+    preview = [
+        {
+            id: numId,
+            name: "Nombre",
+            price: 0,
+            description: "Descripción",
+            stars: 0,
+            image: "assets/images/img-default.png",
+        },
+    ];
+
+    if (window.location.href.includes("?id=")) {
+        loadProduct();
+    }
+
+    printProducts(preview);
+
+    form$$.addEventListener("input", () => {
+        generatePreview(preview);
+        console.log(numId);
+    });
+}
+
+if (window.location.href.includes("management.html?id=")) {
+}
 
 window.onload = () => {
     api(baseUrl).then((prods) => {
