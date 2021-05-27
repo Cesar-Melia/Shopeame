@@ -38,8 +38,20 @@
         }
     }
 
+    &__button-edit {
+        color: #2264d1;
+        background-color: #ffffff;
+        border: 1px solid #9dc2ff;
+        border-radius: 6px;
+        font-size: 14px;
+        padding: 4px 20px 4px 20px;
+        margin-right: 16px;
+        height: 32px;
+    }
+
     &__search {
-        width: 100%;
+        width: 33%;
+        min-width: 70px;
         margin-bottom: 67px;
     }
 
@@ -77,16 +89,6 @@
     &__stars {
         padding: 4px 16px;
         display: block;
-    }
-
-    &__button-edit {
-        color: #2264d1;
-        background-color: #ffffff;
-        border: 1px solid #9dc2ff;
-        border-radius: 6px;
-        font-size: 14px;
-        padding: 4px 20px 4px 20px;
-        margin-right: 16px;
     }
 
     &__stars-block {

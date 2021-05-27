@@ -473,8 +473,20 @@ html {
   height: 18px;
 }
 
+.b-gallery__button-edit {
+  color: #2264d1;
+  background-color: #ffffff;
+  border: 1px solid #9dc2ff;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 4px 20px 4px 20px;
+  margin-right: 16px;
+  height: 32px;
+}
+
 .b-gallery__search {
-  width: 100%;
+  width: 33%;
+  min-width: 70px;
   margin-bottom: 67px;
 }
 
@@ -515,16 +527,6 @@ html {
 .b-gallery__stars {
   padding: 4px 16px;
   display: block;
-}
-
-.b-gallery__button-edit {
-  color: #2264d1;
-  background-color: #ffffff;
-  border: 1px solid #9dc2ff;
-  border-radius: 6px;
-  font-size: 14px;
-  padding: 4px 20px 4px 20px;
-  margin-right: 16px;
 }
 
 .b-icon__header {
@@ -652,6 +654,26 @@ html {
 .b-form__input {
   margin-bottom: 22px;
   font-size: 14px;
+}
+
+.b-form__input::-webkit-input-placeholder {
+  color: #888888;
+  font-size: 12px;
+}
+
+.b-form__input:-ms-input-placeholder {
+  color: #888888;
+  font-size: 12px;
+}
+
+.b-form__input::-ms-input-placeholder {
+  color: #888888;
+  font-size: 12px;
+}
+
+.b-form__input::placeholder {
+  color: #888888;
+  font-size: 12px;
 }
 
 .b-form__button {

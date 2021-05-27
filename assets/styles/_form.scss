@@ -7,8 +7,6 @@
 
     &__fieldset {
         border: none;
-        //border: 0px;
-        //box-shadow: none;
     }
 
     &__label {
@@ -19,6 +17,11 @@
     &__input {
         margin-bottom: 22px;
         font-size: 14px;
+
+        &::placeholder {
+            color: #888888;
+            font-size: 12px;
+        }
     }
 
     &__button {

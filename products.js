@@ -10,6 +10,11 @@ const galleryH2$$ = document.body.querySelector('[data-function="gallery-h2"]');
 const list$$ = document.body.querySelector('[data-function="button-list"]');
 const block$$ = document.body.querySelector('[data-function="button-block"]');
 const search$$ = document.body.querySelector('[data-function="search"]');
+const name$$ = document.body.querySelector('[data-function="name"]');
+const price$$ = document.body.querySelector('[data-function="price"]');
+const description$$ = document.body.querySelector('[data-function="description"]');
+const stars$$ = document.body.querySelector('[data-function="stars"]');
+const image$$ = document.body.querySelector('[data-function="image"]');
 
 let galleryCounter = 0;
 
@@ -48,6 +53,7 @@ const printProducts = (products) => {
 
         const button$$ = document.createElement("button");
         button$$.classList.add("b-gallery__button-edit");
+        button$$.setAttribute("id", product.id);
         button$$.textContent = "Editar";
         button$$.addEventListener("click", editProduct);
 
@@ -59,10 +65,24 @@ const printProducts = (products) => {
     }
 };
 
-api(baseUrl).then((products) => {
-    console.log(products);
-    printProducts(products);
-});
+if (window.location.href.includes("products.html")) {
+    api(baseUrl).then((products) => {
+        printProducts(products);
+    });
+}
+
+const searchProducts = (event) => {
+    api(baseUrl).then((products) => {
+        divProducts$$.innerHTML = "";
+        galleryCounter = 0;
+        let productsList = products.filter((product) =>
+            product.name.toLowerCase().includes(event.target.value.toLowerCase())
+        );
+        printProducts(productsList);
+    });
+};
+
+search$$.addEventListener("input", searchProducts);
 
 const updateGalleryCounter = () => {
     galleryCounter++;
@@ -91,6 +111,29 @@ const setStars = (rating) => {
     return htmlStr;
 };
 
+//////////////////////////////  EDIT PRODUCT  ////////////////////////////
+
 const editProduct = () => {
-    console.log("Editar un producto");
+    const id = event.target.getAttribute("id");
+    console.log(id);
+    // sessionStorage.setItem("reloading", "true");
+    // sessionStorage.setItem("productId", id);
+    // window.location.assign("management.html");
 };
+
+// const fillInputs = () => {
+//     console.log("Editar producto");
+//     const id = sessionStorage.getItem("productId");
+//     sessionStorage.removeItem("productId");
+//     sessionStorage.removeItem("reloading");
+//     console.log(id);
+// };
+
+// let reloading = sessionStorage.getItem("reloading");
+// if (reloading === true) {
+//     fillInputs();
+// }
+
+// let preview = [
+//     { id: galleryCounter + 1, name: "", price: 0, description: "", stars: 0, image: "" },
+// ];

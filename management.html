@@ -42,32 +42,37 @@
     <main class="container-fluid d-flex justify-content-center">
         <div class="b-manage">
             <div class="d-flex justify-content-between flex-column">
-                <h2 data-function="manage-h2" class="b-manage__h2">Creación / Edición de productos</h2>
+                <h2 class="b-manage__h2">Creación / Edición de productos</h2>
                 <div class="b-manage__div-block row">
                     <form class="b-form col-12 col-sm-6">
                         <fieldset class="b-form__fieldset d-flex flex-column">
                             <legend>Create or Update product</legend>
                             <label class="b-form__label" for="name">Nombre del producto:</label>
-                            <input class="b-form__input" type="text" id="name" placeholder="Por ej: Tiesto para planta"
-                                required>
+                            <input data-function="name" class="b-form__input" type="text" id="name"
+                                placeholder="Por ej: Ford Fiesta" required>
                             <label class="b-form__label" for="price">Precio:</label>
-                            <input class="b-form__input" type="text" id="price" placeholder="Por ej: Tiesto para planta"
-                                required>
+                            <input data-function="price" class="b-form__input" type="text" id="price"
+                                placeholder="Por ej: 35.29" required>
                             <label class="b-form__label" for="description">Descripción:</label>
-                            <input class="b-form__input" type="text" id="description"
+                            <input data-function="description" class="b-form__input" type="text" id="description"
                                 placeholder="Por ej: Tiesto para planta" required>
                             <label class="b-form__label" for="url">Ruta de la imagen:</label>
-                            <input class="b-form__input" type="text" id="url" placeholder="Por ej: Tiesto para planta"
-                                required>
-                            <label class="b-form__label" for="rate">Opiniones:</label>
-                            <input class="b-form__input" type="text" id="rate" placeholder="Por ej: Tiesto para planta"
-                                required>
-                            <input class="b-form__button" type="submit" value="Guardar">
+                            <input data-function="image" class="b-form__input" type="text" id="url"
+                                placeholder="Por ej: httpS//mi-imagen.jpg" required>
+                            <label class="b-form__label" for="rate">Valoración:</label>
+                            <input data-function="stars" class="b-form__input" type="text" id="rate"
+                                placeholder="Por ej: 5" required>
+                            <input data-function="submit" class="b-form__button" type="submit" value="Guardar">
                         </fieldset>
                     </form>
                     <div class="b-manage__line d-none d-sm-block"></div>
+                    <div class="b-manage__preview">
+
+                    </div>
+
                 </div>
             </div>
+        </div>
         </div>
     </main>
     <footer class="b-footer d-flex flex-column">
