@@ -43,8 +43,8 @@
         <div class="b-manage">
             <div class="d-flex justify-content-between flex-column">
                 <h2 class="b-manage__h2">Creación / Edición de productos</h2>
-                <div class="b-manage__div-block row">
-                    <form class="b-form col-12 col-sm-6">
+                <div class="b-manage__div-block d-flex justify-content-between">
+                    <form class="b-form col-12 col-md-6">
                         <fieldset class="b-form__fieldset d-flex flex-column">
                             <legend>Create or Update product</legend>
                             <label class="b-form__label" for="name">Nombre del producto:</label>
@@ -65,11 +65,11 @@
                             <input data-function="submit" class="b-form__button" type="submit" value="Guardar">
                         </fieldset>
                     </form>
-                    <div class="b-manage__line d-none d-sm-block"></div>
+                    <div class="b-manage__line d-none d-md-block"></div>
                     <div class="b-manage__preview">
-
+                        <div data-function="products" class="b-manage__product">
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

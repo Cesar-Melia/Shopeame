@@ -17,5 +17,21 @@
         height: 350px;
         width: 1px;
         margin: 0 60px;
+
+        @media (max-width: 992px) {
+            margin: 0 30px;
+        }
     }
+
+    &__div-block {
+        @media (max-width: 768px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    // &__preview {
+    // }
+
+    // &__product {
+    // }
 }
