@@ -167,29 +167,26 @@ async function postProduct(preview) {
         headers: {
             "Content-type": "application/json; charset=UTF-8",
         },
-        body: JSON.stringify(preview[0]),
+        body: JSON.stringify(preview),
     });
     console.log("Post product");
-    console.log(preview[0]);
 }
 
 async function putProduct(preview) {
-    // const res = await fetch("http://localhost:3000/products", {
-    //     method: "PUT",
-    //     headers: {
-    //         "Content-type": "application/json; charset=UTF-8",
-    //     },
-    //     body: JSON.stringify(preview),
-    // });
+    const res = await fetch(`http://localhost:3000/products/${preview.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(preview),
+    });
     console.log("Put product");
-    console.log(preview[0]);
 }
 
 /////////////////////////////////////////////////////////////////////////////  ERROR
 const loadProduct = () => {
     const urlParams = new URLSearchParams(window.location.search);
     numId = urlParams.get("id");
-    console.log(numId);
     //preview[0] = productsMod.find((product) => product.id === numId);
     console.log("Find " + products);
 };
@@ -220,16 +217,15 @@ if (window.location.href.includes("management.html")) {
 
     form$$.addEventListener("input", () => {
         generatePreview(preview);
-        console.log(numId);
     });
 
     submit$$.addEventListener("click", (event) => {
         event.preventDefault();
-        if (numId <= products.length) {
-            postProduct(preview);
-        }
         if (numId > products.length) {
-            putProduct(preview);
+            postProduct(preview[0]);
+        }
+        if (numId <= products.length) {
+            putProduct(preview[0]);
         }
     });
 }
