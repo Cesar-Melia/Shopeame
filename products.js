@@ -23,6 +23,7 @@ const description$$ = document.body.querySelector('[data-function="description"]
 const stars$$ = document.body.querySelector('[data-function="stars"]');
 const image$$ = document.body.querySelector('[data-function="image"]');
 const form$$ = document.querySelector("form");
+const submit$$ = document.querySelector('[data-function="submit"]');
 
 let galleryCounter = 0;
 let numId;
@@ -159,13 +160,38 @@ const generatePreview = (preview) => {
     preview[0].image = image$$.value;
     printProducts(preview);
 };
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+async function postProduct(preview) {
+    const res = await fetch("http://localhost:3000/products", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(preview[0]),
+    });
+    console.log("Post product");
+    console.log(preview[0]);
+}
+
+async function putProduct(preview) {
+    // const res = await fetch("http://localhost:3000/products", {
+    //     method: "PUT",
+    //     headers: {
+    //         "Content-type": "application/json; charset=UTF-8",
+    //     },
+    //     body: JSON.stringify(preview),
+    // });
+    console.log("Put product");
+    console.log(preview[0]);
+}
+
+/////////////////////////////////////////////////////////////////////////////  ERROR
 const loadProduct = () => {
     const urlParams = new URLSearchParams(window.location.search);
     numId = urlParams.get("id");
     console.log(numId);
     //preview[0] = productsMod.find((product) => product.id === numId);
-    console.log("Find " + products[5]);
+    console.log("Find " + products);
 };
 
 if (window.location.href.includes("products.html")) {
@@ -196,9 +222,16 @@ if (window.location.href.includes("management.html")) {
         generatePreview(preview);
         console.log(numId);
     });
-}
 
-if (window.location.href.includes("management.html?id=")) {
+    submit$$.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (numId <= products.length) {
+            postProduct(preview);
+        }
+        if (numId > products.length) {
+            putProduct(preview);
+        }
+    });
 }
 
 window.onload = () => {
