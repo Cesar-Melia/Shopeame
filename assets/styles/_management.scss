@@ -16,7 +16,6 @@
         border-left: solid 1px #f89f21;
         height: 350px;
         width: 1px;
-        margin: 0 60px;
 
         @media (max-width: 992px) {
             margin: 0 30px;
@@ -28,8 +27,4 @@
             flex-wrap: wrap;
         }
     }
-
-    // &__product {
-
-    // }
 }

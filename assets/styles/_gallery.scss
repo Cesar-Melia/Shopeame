@@ -90,4 +90,12 @@
         padding: 4px 16px;
         display: block;
     }
+
+    &__text-stars {
+        margin: auto 0;
+    }
+
+    &__list-style {
+        border-top: solid 1px #adacac;
+    }
 }

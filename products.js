@@ -50,7 +50,7 @@ const printProducts = (products = productsMod) => {
         div$$.setAttribute("id", product.id);
         div$$.innerHTML = `
         <div class="b-gallery__img align-self-center">
-            <img src=${product.image}>
+            <img class="d-flex align-self-center" src=${product.image}>
         </div>`;
 
         const divText$$ = document.createElement("div");
@@ -76,6 +76,7 @@ const printProducts = (products = productsMod) => {
 
         const divTextAndStars$$ = document.createElement("div");
         divTextAndStars$$.setAttribute("data-function", "text-stars");
+        divTextAndStars$$.classList.add("b-gallery__text-stars");
         divTextAndStars$$.appendChild(divText$$);
         divTextAndStars$$.appendChild(divStars$$);
 
@@ -151,7 +152,7 @@ const applyList = () => {
 
     for (block of productContainers$$) {
         block.classList.remove("col-sm-6", "col-lg-3");
-        block.classList.add("flex-row");
+        block.classList.add("flex-row", "b-gallery__list-style");
     }
 
     for (block of textStars$$) {
@@ -169,7 +170,7 @@ const applyBlock = () => {
     divProducts$$.classList.remove("flex-column");
 
     for (product of productContainers$$) {
-        product.classList.remove("flex-row");
+        product.classList.remove("flex-row", "b-gallery__list-style");
         product.classList.add("col-sm-6", "col-lg-3");
     }
 
@@ -226,7 +227,6 @@ async function deleteProduct(preview) {
     console.log("Delete product");
 }
 
-/////////////////////////////////////////////////////////////////////////////  SET TIME OUT ?
 const loadProduct = () => {
     const urlParams = new URLSearchParams(window.location.search);
     numId = urlParams.get("id");
