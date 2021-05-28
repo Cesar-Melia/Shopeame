@@ -19,14 +19,14 @@
         font-size: 14px;
 
         &::placeholder {
-            color: #888888;
+            color: var(--light-grey);
             font-size: 12px;
         }
     }
 
     &__button {
-        color: #ffffff;
-        background-color: #f89f21;
+        color: var(--white);
+        background-color: var(--orange);
         border-radius: 6px;
         border: none;
         width: 120px;

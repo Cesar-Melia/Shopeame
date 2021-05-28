@@ -3,21 +3,21 @@
         font-size: 22px;
         font-weight: 500;
         margin: 5px 0 5px 0;
-        color: #444444;
+        color: var(--medium-grey);
     }
 
     &__list-block {
-        color: #444444;
+        color: var(--medium-grey);
     }
 
     &__star {
-        color: #fb8200;
+        color: var(--dark-orange);
         margin: 0;
     }
 
     &__star-text {
         font-size: 16px;
-        color: #5e6366;
+        color: var(--grey);
         margin: 0;
     }
 

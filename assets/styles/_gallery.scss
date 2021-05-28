@@ -1,10 +1,10 @@
 .b-gallery {
     width: 100%;
     max-width: 1200px;
-    background-color: #ffffff;
+    background-color: var(--white);
     margin: 151px 0 87px 0;
     padding: 40px 59px 59px 59px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px var(--transparent-black);
     border-radius: 10px;
 
     &__h2 {
@@ -13,29 +13,29 @@
 
     &__button {
         border-radius: 6px;
-        border: 1px #adacac;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
-        background-color: #ffffff;
+        border: 1px var(--lighter-grey);
+        box-shadow: 0px 2px 4px var(--transparent-black);
+        background-color: var(--white);
         margin: 0;
         padding: 0;
         height: 30px;
         width: 60px;
 
         &:hover {
-            border: solid 1px rgb(63, 63, 63);
+            border: solid 1px var(--medium-grey);
         }
 
         &--pressed {
-            box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.24);
+            box-shadow: 0px 0px 1px var(--transparent-black);
             border: 1px;
-            background-color: #ededed;
+            background-color: var(--dark-white);
         }
     }
 
     &__button-edit {
-        color: #2264d1;
-        background-color: #ffffff;
-        border: 1px solid #9dc2ff;
+        color: var(--blue);
+        background-color: var(--white);
+        border: 1px solid var(--light-blue);
         border-radius: 6px;
         font-size: 14px;
         padding: 4px 20px 4px 20px;
@@ -43,7 +43,7 @@
         height: 32px;
 
         &:hover {
-            border: 2px solid #9dc2ff;
+            border: 2px solid var(--light-blue);
         }
     }
 
@@ -83,7 +83,7 @@
     }
 
     &__desc {
-        color: #787885;
+        color: var(--grey);
     }
 
     &__stars {
@@ -96,6 +96,6 @@
     }
 
     &__list-style {
-        border-top: solid 1px #adacac;
+        border-top: solid 1px var(--lighter-grey);
     }
 }

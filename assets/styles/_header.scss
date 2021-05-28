@@ -1,6 +1,6 @@
 .b-header {
     height: 100px;
-    background-color: #ffffff;
+    background-color: var(--white);
     text-decoration: none;
 
     &__top {
@@ -14,8 +14,8 @@
         width: 40px;
         margin: 12px;
         border-radius: 6px;
-        background: linear-gradient(90deg, #2979ff 0%, #4c589e 100%);
-        color: #ffffff;
+        background: linear-gradient(90deg, var(--degrading-blue) 0%, var(--degrading-blue2) 100%);
+        color: var(--white);
         font-size: 36px;
         font-weight: bold;
     }
@@ -28,7 +28,7 @@
     &__nav {
         height: 72px;
         width: 100%;
-        background-color: #ffc970;
+        background-color: var(--light-orange);
         z-index: 100;
         margin-bottom: 100px;
     }
@@ -40,13 +40,13 @@
         border-radius: 10px;
 
         &:hover {
-            background-color: #ebf2ff4d;
+            background-color: var(--transparent-grey);
         }
     }
 
     &__link {
         font-size: 14px;
         text-decoration: none;
-        color: #444444;
+        color: var(--medium-grey);
     }
 }
