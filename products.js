@@ -73,6 +73,11 @@ const printProducts = (products = productsMod) => {
             product.stars
         )}</div>`;
 
+        const divTextAndStars$$ = document.createElement("div");
+        divTextAndStars$$.setAttribute("data-function", "text-stars");
+        divTextAndStars$$.appendChild(divText$$);
+        divTextAndStars$$.appendChild(divStars$$);
+
         const button$$ = document.createElement("button");
         button$$.classList.add("b-gallery__button-edit");
         button$$.setAttribute("id", product.id);
@@ -82,8 +87,7 @@ const printProducts = (products = productsMod) => {
         }
 
         divStars$$.appendChild(button$$);
-        div$$.appendChild(divText$$);
-        div$$.appendChild(divStars$$);
+        div$$.appendChild(divTextAndStars$$);
         divProducts$$.appendChild(div$$);
         updateGalleryCounter();
     }
@@ -130,19 +134,47 @@ const setStars = (rating) => {
     return htmlStr;
 };
 
-const editProduct = () => {
+const editProduct = (event) => {
     const id = event.target.getAttribute("id");
     window.location = `management.html?id=${id}`;
 };
 
 const applyList = () => {
+    const productContainers$$ = document.body.querySelectorAll(".b-gallery__product");
+    const textStars$$ = document.body.querySelectorAll('[data-function="text-stars"]');
+
     block$$.classList.remove("b-gallery__button--pressed");
     list$$.classList.add("b-gallery__button--pressed");
+
+    divProducts$$.classList.add("flex-column");
+
+    for (block of productContainers$$) {
+        block.classList.remove("col-sm-6", "col-lg-3");
+        block.classList.add("flex-row");
+    }
+
+    for (block of textStars$$) {
+        block.classList.add("col-8");
+    }
 };
 
 const applyBlock = () => {
+    productContainers$$ = document.body.querySelectorAll(".b-gallery__product");
+    textStars$$ = document.body.querySelectorAll('[data-function="text-stars"]');
+
     list$$.classList.remove("b-gallery__button--pressed");
     block$$.classList.add("b-gallery__button--pressed");
+
+    divProducts$$.classList.remove("flex-column");
+
+    for (product of productContainers$$) {
+        product.classList.remove("flex-row");
+        product.classList.add("col-sm-6", "col-lg-3");
+    }
+
+    for (block of textStars$$) {
+        block.classList.remove("col-8");
+    }
 };
 
 const generatePreview = (preview) => {
@@ -183,7 +215,7 @@ async function putProduct(preview) {
     console.log("Put product");
 }
 
-/////////////////////////////////////////////////////////////////////////////  SET TIME OUT  +  ERROR
+/////////////////////////////////////////////////////////////////////////////  SET TIME OUT ?
 const loadProduct = () => {
     const urlParams = new URLSearchParams(window.location.search);
     numId = urlParams.get("id");
