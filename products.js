@@ -24,6 +24,7 @@ const stars$$ = document.body.querySelector('[data-function="stars"]');
 const image$$ = document.body.querySelector('[data-function="image"]');
 const form$$ = document.querySelector("form");
 const submit$$ = document.querySelector('[data-function="submit"]');
+const delete$$ = document.querySelector('[data-function="delete"]');
 
 let galleryCounter = 0;
 let numId;
@@ -215,22 +216,30 @@ async function putProduct(preview) {
     console.log("Put product");
 }
 
+async function deleteProduct(preview) {
+    const res = await fetch(`http://localhost:3000/products/${preview.id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    });
+    console.log("Delete product");
+}
+
 /////////////////////////////////////////////////////////////////////////////  SET TIME OUT ?
 const loadProduct = () => {
     const urlParams = new URLSearchParams(window.location.search);
     numId = urlParams.get("id");
 
-    setTimeout(() => {
-        preview[0] = productsMod.find((product) => product.id === Number(numId));
+    preview[0] = productsMod.find((product) => product.id === Number(numId));
 
-        name$$.value = preview[0].name;
-        price$$.value = preview[0].price;
-        description$$.value = preview[0].description;
-        stars$$.value = preview[0].stars;
-        image$$.value = preview[0].image;
+    name$$.value = preview[0].name;
+    price$$.value = preview[0].price;
+    description$$.value = preview[0].description;
+    stars$$.value = preview[0].stars;
+    image$$.value = preview[0].image;
 
-        printProducts(preview);
-    }, 100);
+    printProducts(preview);
 };
 
 if (window.location.href.includes("products.html")) {
@@ -251,9 +260,6 @@ if (window.location.href.includes("management.html")) {
         },
     ];
 
-    if (window.location.href.includes("?id=")) {
-        loadProduct();
-    }
     printProducts(preview);
 
     form$$.addEventListener("input", () => {
@@ -269,6 +275,11 @@ if (window.location.href.includes("management.html")) {
             putProduct(preview[0]);
         }
     });
+
+    delete$$.addEventListener("click", (event) => {
+        event.preventDefault();
+        deleteProduct(preview[0]);
+    });
 }
 
 window.onload = () => {
@@ -277,6 +288,9 @@ window.onload = () => {
         products = prods;
         if (window.location.href.includes("products.html")) {
             printProducts();
+        }
+        if (window.location.href.includes("?id=")) {
+            loadProduct();
         }
     });
 };
