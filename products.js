@@ -33,66 +33,70 @@ let preview;
 const printProducts = (products = productsMod) => {
     divProducts$$.innerHTML = "";
     for (product of products) {
-        const div$$ = document.createElement("div");
-        if (window.location.href.includes("products.html")) {
-            div$$.classList.add(
-                "b-gallery__product",
-                "d-flex",
-                "justify-content-between",
-                "col-12",
-                "col-sm-6",
-                "col-lg-3"
-            );
-        }
-        if (window.location.href.includes("manage.html")) {
-            div$$.classList.add("col-12", "col-md-4");
-        }
-        div$$.setAttribute("id", product.id);
-        div$$.innerHTML = `
+        createProduct();
+    }
+};
+
+const createProduct = () => {
+    const div$$ = document.createElement("div");
+    if (window.location.href.includes("products.html")) {
+        div$$.classList.add(
+            "b-gallery__product",
+            "d-flex",
+            "justify-content-between",
+            "col-12",
+            "col-sm-6",
+            "col-lg-3"
+        );
+    }
+    if (window.location.href.includes("manage.html")) {
+        div$$.classList.add("col-12", "col-md-4");
+    }
+    div$$.setAttribute("id", product.id);
+    div$$.innerHTML = `
         <div class="b-gallery__img align-self-center">
             <img class="d-flex align-self-center" src=${product.image}>
         </div>`;
 
-        const divText$$ = document.createElement("div");
-        divText$$.classList.add("b-gallery__text-block");
-        divText$$.innerHTML = `
+    const divText$$ = document.createElement("div");
+    divText$$.classList.add("b-gallery__text-block");
+    divText$$.innerHTML = `
         <div>
             <h4 class="b-gallery__name">${product.name}</h4>
             <span class="b-gallery__price">${product.price} €</span>
             <p class="b-gallery__desc">${product.description}</p>
         </div>`;
 
-        const divStars$$ = document.createElement("div");
-        divStars$$.classList.add(
-            "b-gallery__stars-block",
-            "d-flex",
-            "justify-content-between",
-            "flex-wrap"
-        );
-        divStars$$.innerHTML = `
+    const divStars$$ = document.createElement("div");
+    divStars$$.classList.add(
+        "b-gallery__stars-block",
+        "d-flex",
+        "justify-content-between",
+        "flex-wrap"
+    );
+    divStars$$.innerHTML = `
         <div class="b-gallery__stars d-flex justify-content-between flex-wrap">${setStars(
             product.stars
         )}</div>`;
 
-        const divTextAndStars$$ = document.createElement("div");
-        divTextAndStars$$.setAttribute("data-function", "text-stars");
-        divTextAndStars$$.classList.add("b-gallery__text-stars");
-        divTextAndStars$$.appendChild(divText$$);
-        divTextAndStars$$.appendChild(divStars$$);
+    const divTextAndStars$$ = document.createElement("div");
+    divTextAndStars$$.setAttribute("data-function", "text-stars");
+    divTextAndStars$$.classList.add("b-gallery__text-stars");
+    divTextAndStars$$.appendChild(divText$$);
+    divTextAndStars$$.appendChild(divStars$$);
 
-        const button$$ = document.createElement("button");
-        button$$.classList.add("b-gallery__button-edit");
-        button$$.setAttribute("id", product.id);
-        button$$.textContent = "Editar";
-        if (window.location.href.includes("products.html")) {
-            button$$.addEventListener("click", editProduct);
-        }
-
-        divStars$$.appendChild(button$$);
-        div$$.appendChild(divTextAndStars$$);
-        divProducts$$.appendChild(div$$);
-        updateGalleryCounter();
+    const button$$ = document.createElement("button");
+    button$$.classList.add("b-gallery__button-edit");
+    button$$.setAttribute("id", product.id);
+    button$$.textContent = "Editar";
+    if (window.location.href.includes("products.html")) {
+        button$$.addEventListener("click", editProduct);
     }
+
+    divStars$$.appendChild(button$$);
+    div$$.appendChild(divTextAndStars$$);
+    divProducts$$.appendChild(div$$);
+    updateGalleryCounter();
 };
 
 const searchProducts = (event) => {
@@ -195,36 +199,22 @@ const generatePreview = (preview) => {
     printProducts(preview);
 };
 
-async function postProduct(preview) {
-    const res = await fetch("http://localhost:3000/products", {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-        },
-        body: JSON.stringify(preview),
-    });
-    console.log("Post product");
-}
+async function manageProduct(preview, method) {
+    let url;
+    let body;
+    method === "POST"
+        ? (url = "http://localhost:3000/products")
+        : (url = `http://localhost:3000/products/${preview.id}`);
+    method === "POST" || method === "PUT" ? (body = JSON.stringify(preview)) : undefined;
 
-async function putProduct(preview) {
-    const res = await fetch(`http://localhost:3000/products/${preview.id}`, {
-        method: "PUT",
+    const res = await fetch(url, {
+        method: method,
         headers: {
             "Content-type": "application/json; charset=UTF-8",
         },
-        body: JSON.stringify(preview),
+        body: body,
     });
-    console.log("Put product");
-}
-
-async function deleteProduct(preview) {
-    const res = await fetch(`http://localhost:3000/products/${preview.id}`, {
-        method: "DELETE",
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-        },
-    });
-    console.log("Delete product");
+    resetProduct();
 }
 
 const loadProduct = () => {
@@ -242,13 +232,7 @@ const loadProduct = () => {
     printProducts(preview);
 };
 
-if (window.location.href.includes("products.html")) {
-    search$$.addEventListener("input", searchProducts);
-    list$$.addEventListener("click", applyList);
-    block$$.addEventListener("click", applyBlock);
-}
-
-if (window.location.href.includes("management.html")) {
+const resetProduct = () => {
     preview = [
         {
             id: numId,
@@ -259,8 +243,25 @@ if (window.location.href.includes("management.html")) {
             image: "assets/images/img-default.png",
         },
     ];
-
+    resetInputs();
     printProducts(preview);
+};
+
+const resetInputs = () => {
+    const inputs$$ = document.querySelectorAll("input");
+    for (input of inputs$$) {
+        input.value = "";
+    }
+};
+
+if (window.location.href.includes("products.html")) {
+    search$$.addEventListener("input", searchProducts);
+    list$$.addEventListener("click", applyList);
+    block$$.addEventListener("click", applyBlock);
+}
+
+if (window.location.href.includes("management.html")) {
+    resetProduct();
 
     form$$.addEventListener("input", () => {
         generatePreview(preview);
@@ -269,16 +270,16 @@ if (window.location.href.includes("management.html")) {
     submit$$.addEventListener("click", (event) => {
         event.preventDefault();
         if (numId > products.length) {
-            postProduct(preview[0]);
+            manageProduct(preview[0], "POST");
         }
         if (numId <= products.length) {
-            putProduct(preview[0]);
+            manageProduct(preview[0], "PUT");
         }
     });
 
     delete$$.addEventListener("click", (event) => {
         event.preventDefault();
-        deleteProduct(preview[0]);
+        manageProduct(preview[0], "DELETE");
     });
 }
 
