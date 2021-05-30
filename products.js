@@ -31,12 +31,12 @@ async function api(url) {
 
 const printProducts = (products = productsMod) => {
     divProducts$$.innerHTML = "";
-    for (product of products) {
-        createProduct();
+    for (const product of products) {
+        createProduct(product);
     }
 };
 
-const createProduct = () => {
+const createProduct = (product) => {
     const div$$ = document.createElement("div");
     if (window.location.href.includes("products.html")) {
         div$$.classList.add(
@@ -153,12 +153,12 @@ const applyList = () => {
 
     divProducts$$.classList.add("flex-column");
 
-    for (block of productContainers$$) {
+    for (const block of productContainers$$) {
         block.classList.remove("col-sm-6", "col-lg-3");
         block.classList.add("flex-row", "b-gallery__list-style");
     }
 
-    for (block of textStars$$) {
+    for (const block of textStars$$) {
         block.classList.add("col-8");
     }
 };
@@ -172,12 +172,12 @@ const applyBlock = () => {
 
     divProducts$$.classList.remove("flex-column");
 
-    for (product of productContainers$$) {
+    for (const product of productContainers$$) {
         product.classList.remove("flex-row", "b-gallery__list-style");
         product.classList.add("col-sm-6", "col-lg-3");
     }
 
-    for (block of textStars$$) {
+    for (const block of textStars$$) {
         block.classList.remove("col-8");
     }
 };
@@ -250,7 +250,7 @@ const resetProduct = () => {
 
 const resetInputs = () => {
     const inputs$$ = document.querySelectorAll("input");
-    for (input of inputs$$) {
+    for (const input of inputs$$) {
         input.value = "";
     }
 };
