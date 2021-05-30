@@ -1,16 +1,9 @@
 const baseUrl = "http://localhost:3000/products";
 let products = [];
 let productsMod = [];
-
-async function api(url) {
-    try {
-        const res = await fetch(url);
-        return res.json();
-    } catch (err) {
-        console.error("Error: Fallo de conexion con la API", err);
-        alert("Error: Fallo de conexion con la API");
-    }
-}
+let galleryCounter = 0;
+let numId;
+let preview;
 
 const divProducts$$ = document.body.querySelector('[data-function="products"]');
 const galleryH2$$ = document.body.querySelector('[data-function="gallery-h2"]');
@@ -26,9 +19,15 @@ const form$$ = document.querySelector("form");
 const submit$$ = document.querySelector('[data-function="submit"]');
 const delete$$ = document.querySelector('[data-function="delete"]');
 
-let galleryCounter = 0;
-let numId;
-let preview;
+async function api(url) {
+    try {
+        const res = await fetch(url);
+        return res.json();
+    } catch (err) {
+        console.error("Error: Fallo de conexion con la API", err);
+        alert("Error: Fallo de conexion con la API");
+    }
+}
 
 const printProducts = (products = productsMod) => {
     divProducts$$.innerHTML = "";
@@ -184,12 +183,6 @@ const applyBlock = () => {
 };
 
 const generatePreview = (preview) => {
-    if (numId === undefined) {
-        numId = productsMod.length;
-        while (productsMod.find((product) => product.id === numId)) {
-            numId++;
-        }
-    }
     preview[0].id = numId;
     preview[0].name = name$$.value;
     preview[0].price = price$$.value;
@@ -207,14 +200,20 @@ async function manageProduct(preview, method) {
         : (url = `http://localhost:3000/products/${preview.id}`);
     method === "POST" || method === "PUT" ? (body = JSON.stringify(preview)) : undefined;
 
-    const res = await fetch(url, {
-        method: method,
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-        },
-        body: body,
-    });
-    resetProduct();
+    if (
+        confirm(
+            `  Realizar un ${method} con el siguiente producto: \n\n  id: ${preview.id}\n  name: ${preview.name}\n  price: ${preview.price}\n  description: ${preview.description}\n  stars: ${preview.stars}\n  image: ${preview.image}`
+        )
+    ) {
+        const res = await fetch(url, {
+            method: method,
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            body: body,
+        });
+        method === "PUT" ? (window.location = "management.html") : resetProduct();
+    }
 }
 
 const loadProduct = () => {
@@ -233,6 +232,7 @@ const loadProduct = () => {
 };
 
 const resetProduct = () => {
+    numId = undefined;
     preview = [
         {
             id: numId,
@@ -243,6 +243,7 @@ const resetProduct = () => {
             image: "assets/images/img-default.png",
         },
     ];
+    console.log("resetProducts " + preview.id);
     resetInputs();
     printProducts(preview);
 };
@@ -269,17 +270,19 @@ if (window.location.href.includes("management.html")) {
 
     submit$$.addEventListener("click", (event) => {
         event.preventDefault();
-        if (numId > products.length) {
+        if (!numId) {
             manageProduct(preview[0], "POST");
         }
-        if (numId <= products.length) {
+        if (numId) {
             manageProduct(preview[0], "PUT");
         }
     });
 
     delete$$.addEventListener("click", (event) => {
         event.preventDefault();
-        manageProduct(preview[0], "DELETE");
+        if (preview[0].id) {
+            manageProduct(preview[0], "DELETE");
+        }
     });
 }
 
