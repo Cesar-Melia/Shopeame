@@ -19,7 +19,7 @@ const form$$ = document.querySelector("form");
 const submit$$ = document.querySelector('[data-function="submit"]');
 const delete$$ = document.querySelector('[data-function="delete"]');
 
-async function api(url) {
+const api = async (url) => {
     try {
         const res = await fetch(url);
         return res.json();
@@ -27,7 +27,7 @@ async function api(url) {
         console.error("Error: Fallo de conexion con la API", err);
         alert("Error: Fallo de conexion con la API");
     }
-}
+};
 
 const printProducts = (products = productsMod) => {
     divProducts$$.innerHTML = "";
